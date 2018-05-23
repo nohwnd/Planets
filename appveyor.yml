@@ -1,7 +1,9 @@
 version: 1.0.{build}
-image: WMF 5
+image:
+- Visual Studio 2017
+- Ubuntu
 install:
-- ps: choco install pester --prerelease
+- ps: Install-Module Pester -Force -SkipPublisherCheck -Scope CurrentUser
 build: off
 test_script:
 - ps: Invoke-Pester -EnableExit
