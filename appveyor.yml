@@ -1,6 +1,6 @@
 version: 1.0.{build}
 image:
-- WMF 5
+- Visual Studio 2017
 - Ubuntu
 install:
 - ps: Install-Module Pester -Force -SkipPublisherCheck -Scope CurrentUser
