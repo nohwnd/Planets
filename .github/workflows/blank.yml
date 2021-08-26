@@ -1,9 +1,25 @@
-version: 1.0.{build}
-image:
-- Visual Studio 2017
-- Ubuntu
-install:
-- ps: Install-Module Pester -Force -SkipPublisherCheck -Scope CurrentUser
-build: off
-test_script:
-- ps: Invoke-Pester -EnableExit
+name: Build and Execute Unit Tests
+
+on: 
+  push:
+    branches: 
+      - test
+  pull_request:
+    branches:
+      - test
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Build with dotnet 
+      run: dotnet build --configuration Release
+    - name: Run pester test using invoke-gehrkin
+      run: Invoke-Gherkin
