@@ -14,5 +14,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Run pester test using invoke-gehrkin
-      run: Invoke-Gherkin
+    - name: Gherkin Linter
+      # You may pin to the exact commit or the version.
+      # uses: restqa/gherkin-linter-action@78f35a61d16f923a1709fd8827bfd3ecf8214309
+      uses: restqa/gherkin-linter-action@0.0.1
+      #with:
+        # Specify path to folder where the feature files are located
+       # path: # optional, default is .
+        # Specify the Configuration file
+       # config_file: # optional, default is /root/.gherkin-lintrc
+
